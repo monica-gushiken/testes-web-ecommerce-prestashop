@@ -14,7 +14,7 @@ public class ModalProdutoPage {
 	private By descricaoProduto = By.className("product-name");
 	private By precoProduto = By.cssSelector("div.modal-body p.product-price");
 	private By listaValoresInformados = By.cssSelector("div.divide-right .col-md-6:nth-child(2) span strong");
-	private By subtotal = By.cssSelector("cart-content p:nth-child(2) span.value");
+	private By subtotal = By.cssSelector(".cart-content p:nth-child(2) span.value");
 
 	public ModalProdutoPage(WebDriver driver) {
 		this.driver = driver;
