@@ -3,7 +3,7 @@ Este repositório foi criado para praticar o conteúdo do curso "Início Rápido
 
 ## Objetivo
 Aprender a automatizar testes em site web utilizando as tecnologias: Selenium Web Driver, JUnit, Java.
-Site utilizado na automatização: [demoprestashop](https://marcelodebittencourt.com/demoprestashop/), disponibilizado pelo [Marcelo de Bittencourt](https://www.linkedin.com/in/marcelodebittencourt/). 
+Site de ecommerce utilizado na automatização: [demoprestashop](https://marcelodebittencourt.com/demoprestashop/), disponibilizado pelo [Marcelo de Bittencourt](https://www.linkedin.com/in/marcelodebittencourt/). 
 
 ## Conceitos abordados
 1. Import de bibliotecas utilizando o Maven.
