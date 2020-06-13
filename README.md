@@ -1,9 +1,9 @@
-# Testes Web
+# Testes Web E-commerce Prestashop
 Este repositório foi criado para praticar o conteúdo do curso "Início Rápido em Teste de Software" disponibilizado pela Iterasys e patrocinado pelo Itaú.
 
 ## Objetivo
 Aprender a automatizar testes em site web utilizando as tecnologias: Selenium Web Driver, JUnit, Java.
-Site de ecommerce utilizado na automatização: [demoprestashop](https://marcelodebittencourt.com/demoprestashop/), disponibilizado pelo [Marcelo de Bittencourt](https://www.linkedin.com/in/marcelodebittencourt/). 
+Site de e-commerce utilizado na automatização: [demoprestashop](https://marcelodebittencourt.com/demoprestashop/), disponibilizado pelo [Marcelo de Bittencourt](https://www.linkedin.com/in/marcelodebittencourt/). 
 
 ## Conceitos abordados
 1. Import de bibliotecas utilizando o Maven.
