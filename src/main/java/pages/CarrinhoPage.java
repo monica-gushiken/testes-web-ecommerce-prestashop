@@ -11,7 +11,7 @@ public class CarrinhoPage {
 			.xpath("//div[contains(@class,'product-line-grid-body')]//div[3]//span[contains(@class,'value')]");
 	private By corProduto = By
 			.xpath("//div[contains(@class,'product-line-grid-body')]//div[4]//span[contains(@class,'value')]");
-	private By input_quantidadeProduto = By.cssSelector("input.js-cart-line-product-quantity form-control");
+	private By input_quantidadeProduto = By.cssSelector("input.js-cart-line-product-quantity.form-control");
 	private By subtotalProduto = By.cssSelector("span.product-price strong");
 	private By numeroItensTotal = By.cssSelector("span.js-subtotal");
 	private By subtotalTotal = By.cssSelector("#cart-subtotal-products span.value");
@@ -41,7 +41,7 @@ public class CarrinhoPage {
 	}
 	
 	public String obter_input_quantidadeProduto() {
-		return driver.findElement(input_quantidadeProduto).getText();
+		return driver.findElement(input_quantidadeProduto).getAttribute("value");
 	}
 	
 	public String obter_subtotalProduto() {
