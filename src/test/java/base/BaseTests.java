@@ -1,5 +1,7 @@
 package base;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +18,8 @@ public class BaseTests {
 	public static void inicializar() {
 		System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver\\83\\chromedriver.exe");
 		driver = new ChromeDriver();
+		// todos os comandos findElement e findElements esperarão por até 10s para encontrar o(s) elemento(s)
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	@BeforeEach

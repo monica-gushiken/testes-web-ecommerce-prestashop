@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ModalProdutoPage {
 	private WebDriver driver;
@@ -22,9 +23,15 @@ public class ModalProdutoPage {
 	}
 
 	public String obterMensagemProdutoAdicionado() {
+		
+		// Espera mais customizável
 		FluentWait espera = new FluentWait(driver).withTimeout(Duration.ofSeconds(10))
 				.pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
 		espera.until(ExpectedConditions.visibilityOfElementLocated(mensagemProdutoAdicionado));
+		
+		// Espera explícita
+//		WebDriverWait wait = new WebDriverWait(driver,10);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(mensagemProdutoAdicionado));
 		return driver.findElement(mensagemProdutoAdicionado).getText();
 	}
 
