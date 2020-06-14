@@ -1,5 +1,5 @@
 # Testes Web E-commerce Prestashop
-Este repositório foi criado para praticar o conteúdo do curso "Início Rápido em Teste de Software" disponibilizado pela Iterasys e patrocinado pelo Itaú.
+Este repositório foi criado para praticar o conteúdo de *Testes Web* do curso "Início Rápido em Teste de Software" disponibilizado pela Iterasys e patrocinado pelo Itaú.
 
 ## Objetivo
 Aprender a automatizar testes em site web utilizando as tecnologias: Selenium Web Driver, JUnit, Java.
