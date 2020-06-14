@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import base.BaseTests;
+import pages.CarrinhoPage;
 import pages.LoginPage;
 import pages.ModalProdutoPage;
 import pages.ProdutoPage;
@@ -16,6 +17,7 @@ public class HomePageTests extends BaseTests {
 
 	LoginPage loginPage;
 	ProdutoPage produtoPage;
+	ModalProdutoPage modalProdutoPage;
 	String nomeProduto_ProdutoPage;
 
 	@Test
@@ -55,6 +57,7 @@ public class HomePageTests extends BaseTests {
 		carregarPaginaInicial();
 	}
 
+	
 	@Test
 	public void testIncluirProdutoNoCarrinho_ProdutoIncluidoComSucesso() {
 
@@ -80,10 +83,10 @@ public class HomePageTests extends BaseTests {
 		produtoPage.alterarQuantidade(quantidadeProduto);
 
 		// Clicar no botão Add to cart
-		ModalProdutoPage modalProdutoPage = produtoPage.clicarBotaoAddToCart();
+		modalProdutoPage = produtoPage.clicarBotaoAddToCart();
 
 		// Validações
-		
+
 		assertTrue(modalProdutoPage.obterMensagemProdutoAdicionado()
 				.endsWith("Product successfully added to your shopping cart"));
 		assertEquals(nomeProduto_ProdutoPage.toUpperCase(), modalProdutoPage.obterNomeProduto().toUpperCase());
@@ -93,15 +96,22 @@ public class HomePageTests extends BaseTests {
 		String precoProdutoString = modalProdutoPage.obterPrecoProduto();
 		precoProdutoString = precoProdutoString.replace("$", "");
 		Double precoProduto = Double.parseDouble(precoProdutoString);
-				
+
 		String subtotalString = modalProdutoPage.obterSubtotal();
 		subtotalString = subtotalString.replace("$", "");
 		Double subtotal = Double.parseDouble(subtotalString);
 
 		Double subtotalCalculado = quantidadeProduto * precoProduto;
-		
+
 		assertEquals(subtotalCalculado, subtotal);
-		
+
 	}
 
+	@Test
+	public void testIrParaCarrinho_InformacoesPersistidas() {
+		testIncluirProdutoNoCarrinho_ProdutoIncluidoComSucesso();
+		CarrinhoPage carrinhoPage = modalProdutoPage.clicarBotaoProceedToCheckout();
+		
+		
+	}
 }
