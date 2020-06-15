@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import base.BaseTests;
 import pages.CarrinhoPage;
+import pages.CheckoutPage;
 import pages.LoginPage;
 import pages.ModalProdutoPage;
 import pages.ProdutoPage;
@@ -118,10 +119,12 @@ public class HomePageTests extends BaseTests {
 	Double esperado_totalComTaxa = esperado_totalSemTaxa;
 	Double esperado_taxasTotal = 0.00;
 
+	CarrinhoPage carrinhoPage;
+
 	@Test
 	public void testIrParaCarrinho_InformacoesPersistidas() {
 		testIncluirProdutoNoCarrinho_ProdutoIncluidoComSucesso();
-		CarrinhoPage carrinhoPage = modalProdutoPage.clicarBotaoProceedToCheckout();
+		carrinhoPage = modalProdutoPage.clicarBotaoProceedToCheckout();
 
 		System.out.println("*** TELA DO CARRINHO ***");
 		System.out.println(carrinhoPage.obter_nomeProduto());
@@ -153,6 +156,17 @@ public class HomePageTests extends BaseTests {
 		assertEquals(esperado_totalSemTaxa, Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_totalSemTaxa()));
 		assertEquals(esperado_totalComTaxa, Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_totalComTaxa()));
 		assertEquals(esperado_taxasTotal, Funcoes.removeCifraoDevolveDouble(carrinhoPage.obter_taxasTotal()));
+	}
 
+	CheckoutPage checkoutPage;
+
+	@Test
+	public void testIrParaCheckout_freteMeioPagamentoEFreteListadosOk() {
+		// Pré-condições
+		// Produto disponível no carrinho de compras
+		testIrParaCarrinho_InformacoesPersistidas();
+
+		checkoutPage = carrinhoPage.clicarBotaoProceedToCheckout();
+		assertEquals(esperado_totalComTaxa, Funcoes.removeCifraoDevolveDouble(checkoutPage.obter_totalComTaxa()));
 	}
 }
