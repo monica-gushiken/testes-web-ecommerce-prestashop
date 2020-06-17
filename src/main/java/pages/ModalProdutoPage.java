@@ -23,12 +23,12 @@ public class ModalProdutoPage {
 	}
 
 	public String obterMensagemProdutoAdicionado() {
-		
+
 		// Espera mais customizável
 		FluentWait espera = new FluentWait(driver).withTimeout(Duration.ofSeconds(10))
 				.pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
 		espera.until(ExpectedConditions.visibilityOfElementLocated(mensagemProdutoAdicionado));
-		
+
 		// Espera explícita
 //		WebDriverWait wait = new WebDriverWait(driver,10);
 //		wait.until(ExpectedConditions.invisibilityOfElementLocated(mensagemProdutoAdicionado));
@@ -61,6 +61,6 @@ public class ModalProdutoPage {
 
 	public CarrinhoPage clicarBotaoProceedToCheckout() {
 		driver.findElement(botaoProceedToCheckout).click();
-		return  new CarrinhoPage(driver);
+		return new CarrinhoPage(driver);
 	}
 }
