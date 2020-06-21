@@ -208,21 +208,24 @@ public class HomePageTests extends BaseTests {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/massaTeste_Login.csv", numLinesToSkip = 1, delimiter = ';')
-	public void testLogin_UsuarioLogadoComDadosValidos(String nomeTeste, String email, String password, String nomeUsuario,
-			String resultado) {
+	public void testLogin_UsuarioLogadoComDadosValidos(String nomeTeste, String email, String password,
+			String nomeUsuario, String resultado) {
 		loginPage = homePage.clicarBotaoSignIn();
 		loginPage.preencherEmail(email);
 		loginPage.preencherSenha(password);
 		loginPage.clicarBotaoSignIn();
-		
-		boolean esperado_loginOk; 
-		if(resultado.equals("positivo")) 
+
+		boolean esperado_loginOk;
+		if (resultado.equals("positivo"))
 			esperado_loginOk = true;
 		else
 			esperado_loginOk = false;
-		
+
 		assertEquals(esperado_loginOk, homePage.estaLogado(nomeUsuario));
-		if(esperado_loginOk)
+
+		capturarTela(nomeTeste, resultado);
+
+		if (esperado_loginOk)
 			homePage.clicarBotaoSignOut();
 		carregarPaginaInicial();
 	}
