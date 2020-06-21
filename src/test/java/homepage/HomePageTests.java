@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import base.BaseTests;
 import pages.CarrinhoPage;
@@ -203,4 +205,26 @@ public class HomePageTests extends BaseTests {
 		assertEquals(esperado_totalComTaxa, Funcoes.removeCifraoDevolveDouble(pedidoPage.obter_totalComTaxa()));
 		assertEquals("check", pedidoPage.obter_metodoPagamento());
 	}
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/massaTeste_Login.csv", numLinesToSkip = 1, delimiter = ';')
+	public void testLogin_UsuarioLogadoComDadosValidos(String nomeTeste, String email, String password, String nomeUsuario,
+			String resultado) {
+		loginPage = homePage.clicarBotaoSignIn();
+		loginPage.preencherEmail(email);
+		loginPage.preencherSenha(password);
+		loginPage.clicarBotaoSignIn();
+		
+		boolean esperado_loginOk; 
+		if(resultado.equals("positivo")) 
+			esperado_loginOk = true;
+		else
+			esperado_loginOk = false;
+		
+		assertEquals(esperado_loginOk, homePage.estaLogado(nomeUsuario));
+		if(esperado_loginOk)
+			homePage.clicarBotaoSignOut();
+		carregarPaginaInicial();
+	}
+
 }
