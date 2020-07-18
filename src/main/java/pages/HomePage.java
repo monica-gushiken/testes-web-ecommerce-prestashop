@@ -58,6 +58,10 @@ public class HomePage {
 		return new LoginPage(driver);
 	}
 
+	public boolean estaLogado() {
+		return !"Sign in".contentEquals(driver.findElement(usuarioLogado).getText());
+	}
+
 	public boolean estaLogado(String texto) {
 		return texto.contentEquals(driver.findElement(usuarioLogado).getText());
 
@@ -66,4 +70,13 @@ public class HomePage {
 	public void clicarBotaoSignOut() {
 		driver.findElement(botaoSignOut).click();
 	}
+
+	public void carregarPaginaInicial() {
+		driver.get("https://marcelodebittencourt.com/demoprestashop/");
+	}
+
+	public String obterTituloPagina() {
+		return driver.getTitle();
+	}
+
 }
