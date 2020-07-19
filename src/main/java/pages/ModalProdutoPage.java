@@ -24,12 +24,12 @@ public class ModalProdutoPage {
 
 	public String obterMensagemProdutoAdicionado() {
 
-		// Espera mais customizável
+		// Espera mais customizï¿½vel
 		FluentWait espera = new FluentWait(driver).withTimeout(Duration.ofSeconds(10))
 				.pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
 		espera.until(ExpectedConditions.visibilityOfElementLocated(mensagemProdutoAdicionado));
 
-		// Espera explícita
+		// Espera explï¿½cita
 //		WebDriverWait wait = new WebDriverWait(driver,10);
 //		wait.until(ExpectedConditions.invisibilityOfElementLocated(mensagemProdutoAdicionado));
 		return driver.findElement(mensagemProdutoAdicionado).getText();
@@ -48,11 +48,17 @@ public class ModalProdutoPage {
 	}
 
 	public String obterCorProduto() {
-		return driver.findElements(listaValoresInformados).get(1).getText();
+		if (driver.findElements(listaValoresInformados).size() == 3)
+			return driver.findElements(listaValoresInformados).get(1).getText();
+		else
+			return "N/A";
 	}
 
 	public int obterQuantidadeProduto() {
-		return Integer.parseInt(driver.findElements(listaValoresInformados).get(2).getText());
+		if (driver.findElements(listaValoresInformados).size() == 3)
+			return Integer.parseInt(driver.findElements(listaValoresInformados).get(2).getText());
+		else
+			return Integer.parseInt(driver.findElements(listaValoresInformados).get(1).getText());
 	}
 
 	public String obterSubtotal() {

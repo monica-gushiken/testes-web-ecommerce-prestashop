@@ -105,7 +105,8 @@ public class ComprarProdutoSteps {
 		produtoPage.selecionarOpcaoDropdown(tamanhoProduto);
 
 		// Selecionar cor
-		produtoPage.selecionarCorPreta();
+		if (!corProduto.contentEquals("N/A"))
+			produtoPage.selecionarCorPreta();
 
 		// Selecionar a quantidade
 		produtoPage.alterarQuantidade(quantidadeProduto);
@@ -123,7 +124,8 @@ public class ComprarProdutoSteps {
 			String precoProduto, String tamanhoProduto, String corProduto, Integer quantidadeProduto) {
 		assertEquals(nomeProduto_ProdutoPage.toUpperCase(), modalProdutoPage.obterNomeProduto().toUpperCase());
 		assertEquals(tamanhoProduto, modalProdutoPage.obterTamanhoProduto());
-		assertEquals(corProduto, modalProdutoPage.obterCorProduto());
+		if (!corProduto.contentEquals("N/A"))
+			assertEquals(corProduto, modalProdutoPage.obterCorProduto());
 		assertEquals(quantidadeProduto, modalProdutoPage.obterQuantidadeProduto());
 		Double precoProdutoEncontrado = Funcoes.removeCifraoDevolveDouble(modalProdutoPage.obterPrecoProduto());
 		Double precoProdutoEsperado = Funcoes.removeCifraoDevolveDouble(precoProduto);
